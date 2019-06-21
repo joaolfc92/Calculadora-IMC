@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calcular IMC</title>
+	<meta charset="utf-8">
+	<style>
+
+	body{
+		 background: linear-gradient(to top,#6d3880, #e97992, #605b83);
+		 height: 1000px;
+	}
+
+	.tabela{
+		height: 450px;
+		width: 400px;
+		border-radius: 10px;
+		top:50%;
+		left: 50%;
+		transform: translateX(-50%) translateY(-50%);
+		position: absolute;
+		
+		
+	}	
+
+	.titulo{
+		font-size: 30px;
+		color: white;
+		text-align: center;
+		padding-top: 40px;
+		
+	}	
+
+	.container{
+		font-size: 21px;
+		color: white;
+		display: inline-grid;
+		margin-top: 50px;
+
+	}
+
+	#btn{
+		height: 50px;
+		width: 267px;
+		text-align: center;
+		color: white;
+		background-color: rgba(197,191,193,0.25);
+		font-size: 18px;
+		font-family: gadugi;
+		border:1px solid #ccc;
+	}
+
+	#btn:hover{
+		cursor: pointer;
+	}
+
+	input{
+		display: block;
+		height: 50px;
+		width: 265px;
+		text-align: center;
+		color: white;
+		background-color: rgba(197,191,193,0.25);
+		font-size: 18px;
+		font-family: gadugi;
+		border:1px solid #ccc;
+
+	}
+
+	form{
+		margin-left: 20%;
+
+	}
+
+
+
+::-webkit-input-placeholder {
+   color: white;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: white;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: white;  
+}
+
+:-ms-input-placeholder {  
+   color: white;  
+}	
+
+
+	#resultado{
+		height: 120px;
+		width: 267px;
+		text-align: center;
+		color: white;
+		background-color: rgba(197,191,193,0.25);
+		font-size: 25px;
+		font-family: gadugi;
+		border:1px solid #ccc;
+		margin-top: 20px;
+		line-height: 120px;
+	}
+
+
+
+
+	</style>
+	
+	
+</head>
+<body>
+
+	<div class="tabela">
+		<div class="titulo">Calcule seu IMC:</div>
+
+		<div class="container">
+
+			<form>
+				<input type="text" id="Peso" placeholder="Digite seu Peso"><br>
+				<input type="Number" id="altura" placeholder="Digite sua altura"><br>
+				<input type="button" id="btn" placeholder="Calcular" value="Calcular" onclick="calculo()">	
+
+				<div id="resultado">Resultado</div>
+			</form>	
+
+			
+		</div>
+	</div>
+
+
+	
+
+
+
+	
+	 
+
+	
+
+	<script>
+		
+		function calculo(){
+			var peso = document.getElementById("Peso").value;
+			var alt = document.getElementById("altura").value;
+			var msg;
+			var quebra = "<br>"
+
+			var alt2 = Math.pow(alt,2);
+
+			var imc = parseInt(peso/alt2);
+
+			if (imc<17) {
+				msg = "Muito Abaixo do Peso";
+			}else if ((imc>=17)&&(imc<18.49)) {
+				msg = "Abaixo do Peso";
+			}else if ((imc>18.50)&&(imc<24.99)) {
+				msg = "Peso Normal";
+			}else if ((imc>25)&&(imc<29.99)) {
+				msg = "Acima do Peso";
+			}else if ((imc>30)&&(imc<34.99)) {
+				msg = "Obesidade I";
+			}else if ((imc>35)&&(imc<39.99)) {
+				msg = "Obesidade II";
+			}else{
+				msg = "Obesidade III";
+			}
+
+
+			document.getElementById("resultado").style.lineHeight="50px";
+			document.getElementById("resultado").innerHTML = "Seu IMC está em: "+imc+quebra+"Status: "+msg;
+
+			//("Seu IMC está em: "+imc+quebra+"Status: "+msg);			
+		}
+
+	</script>
+
+</body>
+</html>
